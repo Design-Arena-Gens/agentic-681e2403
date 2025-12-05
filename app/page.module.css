@@ -1,0 +1,198 @@
+.main {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #315f9a 0%, #0f1b2b 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.scene {
+  position: relative;
+  width: min(1200px, 100%);
+  height: min(700px, 90vh);
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #233d63 0%, #152236 45%, #0d1423 100%);
+  box-shadow: 0 40px 120px rgba(10, 20, 35, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.skyGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(140, 202, 245, 0.9), rgba(33, 56, 90, 0.2));
+  mix-blend-mode: screen;
+  opacity: 0.65;
+}
+
+.cloudLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.cloudLayer.offset {
+  animation: floatLayer 26s linear infinite;
+}
+
+.cloudLayer.near {
+  animation: floatLayer 30s linear infinite reverse;
+}
+
+.cloudLayer.mid {
+  animation: floatLayer 40s linear infinite reverse;
+  opacity: 0.75;
+}
+
+.cloudLayer.far {
+  animation: floatLayer 55s linear infinite;
+  opacity: 0.55;
+}
+
+.cloud {
+  width: clamp(10rem, 18vw, 22rem);
+  height: clamp(6rem, 9vw, 12rem);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.6), transparent 70%),
+    radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.8), transparent 65%);
+  filter: blur(10px);
+  border-radius: 50%;
+  animation: puff 14s ease-in-out infinite;
+}
+
+.cloud:nth-child(odd) {
+  transform: scale(1.2);
+  animation-duration: 18s;
+}
+
+.cloud:nth-child(even) {
+  animation-duration: 20s;
+}
+
+.hero {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+}
+
+.titleBlock {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 15px 35px rgba(9, 18, 31, 0.6);
+}
+
+.titleBlock h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.titleBlock p {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 32ch;
+  color: rgba(226, 239, 255, 0.78);
+}
+
+.characters {
+  position: relative;
+  width: min(430px, 80vw);
+  height: min(340px, 60vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.martialArtist,
+.eagle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.martialArtist {
+  width: 230px;
+  filter: drop-shadow(0 20px 40px rgba(9, 18, 31, 0.85));
+}
+
+.martialArtist svg {
+  width: 100%;
+}
+
+.energyTrail {
+  position: absolute;
+  inset: -20% -25% 35% -25%;
+  background: radial-gradient(circle at 50% 0%, rgba(117, 187, 255, 0.48), transparent 70%);
+  filter: blur(18px);
+  border-radius: 45% 55% 65% 35%;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.eagle {
+  width: 280px;
+  right: -6%;
+  top: -12%;
+  filter: drop-shadow(0 12px 28px rgba(6, 14, 24, 0.7));
+}
+
+.eagle svg {
+  width: 100%;
+}
+
+.wingFlare {
+  position: absolute;
+  inset: 18% 12% 38% 12%;
+  background: radial-gradient(circle, rgba(160, 210, 255, 0.45), transparent 70%);
+  filter: blur(22px);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+@keyframes puff {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes floatLayer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-12%);
+  }
+}
+
+@media (max-width: 768px) {
+  .characters {
+    margin-top: 2rem;
+    height: 280px;
+  }
+
+  .eagle {
+    width: 220px;
+  }
+
+  .martialArtist {
+    width: 200px;
+  }
+}

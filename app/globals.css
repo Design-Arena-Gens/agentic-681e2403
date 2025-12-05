@@ -1,0 +1,21 @@
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+  background: #05080f;
+  color: #f5f9ff;
+}
+
+h1,
+p {
+  margin: 0;
+}
